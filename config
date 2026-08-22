@@ -1,0 +1,133 @@
+#  _______                _______  ________   _     ______
+#  / _____|    _______   |  ____|  | ______| /_\   /      \
+# / /         /  __   \  | |____   | |_____   __  |_/_\_| |
+# | |         | |   | |  | _____|  | _____|  | |    __  | |
+# | |______   | |___| |  | |       | |       | |   | _|_/ |
+# \________|   \_____/   |_|       |_|       |_|   |_____/
+# ik the ascii is kinda shitty but its a 
+# nessecity so it will do i supose
+# config by lucas mejia btw
+
+# variables #
+
+# key vars
+set $mod Mod4
+ 
+# app vars
+set $terminal kitty
+set $applauncher "wofi --show drun"
+set $wallpaper /home/lucas/.bin/swaybgConfigscript
+set $browser firefox
+
+set $xdg-port /usr/libexec/xdg-desktop-portal
+set $xdg-port-gtk /usr/libexec/xdg-desktop-portal-gkt
+set $xdg-port-wlr /usr/libexec/xdg-desktop-portal-wlr
+
+# auto start
+exec $xdg-port
+exec $xdg-port-gtk
+exec $xdg-port-wlr
+exec $wallpaper 
+
+# keybinds #
+bindsym $mod+q exec $terminal
+bindsym $mod+r exec $applauncher
+bindsym $mod+f exec $browser
+bindsym $mod+m mode "audio"
+bindsym $mod+c kill
+
+# foo
+bindsym $mod+Shift+r reload
+bindsym $mod+Shift+m exec swaynag -t warning -m 'YOU yes YOU will be loged out DO YOU REALLLYYY want to quit' -B 'yes i DO want to' 'swaymsg exit'
+
+bindsym $mod+h splith
+bindsym $mod+b splitv
+
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+p layout toggle split
+
+bindsym $mod+v floating toggle
+bindsym $mod+space focus mode_toggle
+
+# windows and workspaces #
+# tecncly keybinds but its special
+
+# move to workspaces
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+# move the container/window to workspaces
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# move between windows
+bindsym $mod+Left focus left                                                                         
+bindsym $mod+Down focus down                                                            
+bindsym $mod+Up focus up                                                  
+bindsym $mod+Right focus right
+
+# move windows between windows
+bindsym $mod+Shift+left move left                                                      
+bindsym $mod+Shift+down move down                                        
+bindsym $mod+Shift+up move up                                        
+bindsym $mod+Shift+right move right   
+
+# other SHIT #
+# cursing is so tuff omg tm
+
+mode "move" {
+bindsym Left resize shrink width 10px
+bindsym Down resize grow height 10px
+bindsym Up resize shrink height 10px
+bindsym Right resize grow width 10px
+
+bindsym Escape mode "default"
+}
+mode "audio" {
+bindsym r exec /home/lucas/.bin/audio-inc
+bindsym f exec /home/lucas/.bin/audio-dec
+
+bindsym Escape mode "default"
+}
+
+# Colours
+
+set $red #C42D2D
+set $orange #EA9C29
+set $green #6DBE60
+set $blue #3881DA
+set $inigo #502C96
+set $purple #502C96
+
+
+set $placeholder #613583
+
+## Window Colours
+client.focused   $red  $green $red
+client.focused_inactive  $inigo  $inigo  $green  $inigo  $inigo
+client.unfocused   $blue  $blue $green $blue $blue
+client.urgent   $blue  $blue $green  $blue  $blue
+client.placeholder $placeholder $placeholder $placeholder $placeholder
+client.background  $placeholder 
+gaps inner 4
+gaps outer 4
+default_border pixel 2
+titlebar_padding 1
+titlebar_border_thickness 0  

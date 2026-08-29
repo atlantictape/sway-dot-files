@@ -1,0 +1,4 @@
+mode=drun
+allow_images=true
+images_size=24
+hide_scroll=true

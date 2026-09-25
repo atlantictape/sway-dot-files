@@ -1,54 +1,85 @@
-#  _______                _______  ________   _     ______
-#  / _____|    _______   |  ____|  | ______| /_\   /      \
-# / /         /  __   \  | |____   | |_____   __  |_/_\_| |
-# | |         | |   | |  | _____|  | _____|  | |    __  | |
-# | |______   | |___| |  | |       | |       | |   | _|_/ |
-# \________|   \_____/   |_|       |_|       |_|   |_____/
-# ik the ascii is kinda shitty but its a 
-# nessecity so it will do i supose
-# config by lucas mejia btw
+#--CCC-.--OOO--.------.--fff-.--!--
+#-C----.-O---O-.-n----.-f----.--!--
+#-C----.-O---O-.-nnn--.-ffff-.--!--
+#-C----.-O---O-.-n--n-.-f----.-----
+#--CCC-.--OOO--.-n--n-.-f----.--!--
+# by lucas mejia
+#
+# also fun fact when you want to look
+# at the man page but its like
+# foo(67) you need to do man "foo(67)"
 
-# variables #
+# config vars #
 
-# key vars
+# keybind vars
 set $mod Mod4
- 
+
+# color vars
+set $red #C42D2D
+set $orange #EA9C29
+set $green #6DBE60
+set $blue #3881DA
+set $inigo #502C96
+set $purple #502C96
+
 # app vars
 set $terminal kitty
-set $applauncher "wofi --show drun"
-set $wallpaper /home/lucas/.bin/swaybgConfigscript
+set $applancher "wofi --show drun"
+set $wallpapers /home/lucas/.executables/SwaybgScript
+set $envormentvars /home/lucas/.executables/sway-vars
 set $browser firefox
+# screenshot "comands"
+set $screen-shot /home/lucas/.executables/grim-save
+set $screen-copy /home/lucas/.executables/grim-copy
 
-set $xdg-port /usr/libexec/xdg-desktop-portal
-set $xdg-port-gtk /usr/libexec/xdg-desktop-portal-gkt
-set $xdg-port-wlr /usr/libexec/xdg-desktop-portal-wlr
+# settings #
+# you know this
+focus_follows_mouse yes
 
-# auto start
-exec $xdg-port
-exec $xdg-port-gtk
-exec $xdg-port-wlr
-exec $wallpaper 
+# it dosent focus on new windows i think
+focus_on_window_activation none
+# you cant drag tiles
+tiling_drag disable
+
+# dose not show the "open down or sideways"
+# "mark"
+show_marks no
+
+# auto start #
+exec $wallpaper
+exec $envormentvars
+
+#window bar stuffs config #
+gaps inner 4
+gaps outer 4
+default_border pixel 3
+titlebar_padding 1
+titlebar_border_thickness 0
+client.focused #454355 #6A679E #454355 $red #454355
+client.unfocused #13121F #6A679E #13121F $red #13121F 
+
+# Window Colours
+# example:
+#
+# client.example <border around title> <backgorund around title>
+# <text in title> <indicator(the marks)> <child/window border>
 
 # keybinds #
 bindsym $mod+q exec $terminal
-bindsym $mod+r exec $applauncher
+bindsym $mod+r exec "wofi --show drun"
 bindsym $mod+f exec $browser
-bindsym $mod+m mode "audio"
 bindsym $mod+c kill
-
-# foo
-bindsym $mod+Shift+r reload
-bindsym $mod+Shift+m exec swaynag -t warning -m 'YOU yes YOU will be loged out DO YOU REALLLYYY want to quit' -B 'yes i DO want to' 'swaymsg exit'
-
-bindsym $mod+h splith
-bindsym $mod+b splitv
-
-bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed
-bindsym $mod+p layout toggle split
-
+bindsym $mod+g exec $screen-copy
+bindsym $mod+Shift+g $screen-shot
 bindsym $mod+v floating toggle
-bindsym $mod+space focus mode_toggle
+
+bindsym $mod+Shift+r reload
+bindsym $mod+m exec swaynag -t warning -m 'YOU yes YOU will be loged out DO YOU REALLLYYY want to quit?!?!?
+
+#split horazontile
+bindsym $mod+h splith
+#split sideways
+bindsym $mod+s splitv
 
 # windows and workspaces #
 # tecncly keybinds but its special
@@ -78,56 +109,18 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
 # move between windows
-bindsym $mod+Left focus left                                                                         
-bindsym $mod+Down focus down                                                            
-bindsym $mod+Up focus up                                                  
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move windows between windows
-bindsym $mod+Shift+left move left                                                      
-bindsym $mod+Shift+down move down                                        
-bindsym $mod+Shift+up move up                                        
-bindsym $mod+Shift+right move right   
-
-# other SHIT #
-# cursing is so tuff omg tm
-
-mode "move" {
-bindsym Left resize shrink width 10px
-bindsym Down resize grow height 10px
-bindsym Up resize shrink height 10px
-bindsym Right resize grow width 10px
-
-bindsym Escape mode "default"
-}
-mode "audio" {
-bindsym r exec /home/lucas/.bin/audio-inc
-bindsym f exec /home/lucas/.bin/audio-dec
-
-bindsym Escape mode "default"
-}
-
-# Colours
-
-set $red #C42D2D
-set $orange #EA9C29
-set $green #6DBE60
-set $blue #3881DA
-set $inigo #502C96
-set $purple #502C96
-
-
-set $placeholder #613583
-
-## Window Colours
-client.focused   $red  $green $red
-client.focused_inactive  $inigo  $inigo  $green  $inigo  $inigo
-client.unfocused   $blue  $blue $green $blue $blue
-client.urgent   $blue  $blue $green  $blue  $blue
-client.placeholder $placeholder $placeholder $placeholder $placeholder
-client.background  $placeholder 
-gaps inner 4
-gaps outer 4
-default_border pixel 2
-titlebar_padding 1
-titlebar_border_thickness 0  
+bindsym $mod+Shift+left move left
+bindsym $mod+Shift+down move down
+bindsym $mod+Shift+up move up
+bindsym $mod+Shift+right move right
+# i dont use these layouts
+# but to not lock myself out 
+bindsym $mod+Shift+m layout stacking
+bindsym $mod+Shift+l layout tabbed
+bindsym $mod+Shift+p layout toggle split

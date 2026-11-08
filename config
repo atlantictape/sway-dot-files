@@ -3,13 +3,17 @@
 #-C----.-O---O-.-nnn--.-ffff-.--!--
 #-C----.-O---O-.-n--n-.-f----.-----
 #--CCC-.--OOO--.-n--n-.-f----.--!--
-# by ME(atlantictape/walkerfunny)
+# by lucas mejia
 #
 # also fun fact when you want to look
 # at the man page but its like
 # foo(67) you need to do man "foo(67)"
 
 # config vars #
+
+# king alpine wiki told me to do it
+exec dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
+
 
 # keybind vars
 set $mod Mod4
@@ -46,8 +50,8 @@ tiling_drag disable
 show_marks no
 
 # auto start #
-exec $wallpaper
-exec $envormentvars
+exec /home/lucas/.executables/SwaybgScript
+exec /home/lucas/.executables/sway-vars
 
 #window bar stuffs config #
 gaps inner 4
@@ -74,7 +78,7 @@ bindsym $mod+Shift+g $screen-shot
 bindsym $mod+v floating toggle
 
 bindsym $mod+Shift+r reload
-bindsym $mod+m exec swaynag -t warning -m 'YOU yes YOU will be loged out DO YOU REALLLYYY want to quit?!?!?
+bindsym $mod+m exec swaynag -t warning -m 'YOU yes YOU will be loged out DO YOU REALLLYYY want to quit?!?!?' -B 'yes, i REALLy do' 'swaymsg exit'
 
 #split horazontile
 bindsym $mod+h splith

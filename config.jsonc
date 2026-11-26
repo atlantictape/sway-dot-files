@@ -1,0 +1,61 @@
+// -*- mode: jsonc -*-
+{
+
+	"height": 20,
+	"spacing": 0,
+
+	"modules-left": [
+		"sway/window",
+	],
+	
+	"modules-center": [
+		"sway/workspaces",
+	],
+
+	"modules-right": [
+		"clock",
+		"memory",
+		"cpu",
+	],
+
+
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": true,
+		"warp-on-scroll": false,
+		"format": "{icon}",
+		
+		"format-icons": {
+			"1": "-I-",
+			"2": "II-",
+			"3": "III",
+			"4": "IV-",
+			"5": "-V-",
+			"6": "VI-",
+			"7": "VII",
+			"8": "IIX",
+			"9": "IX-",
+			"10": "-X-",
+
+			"urgent": "",
+			"focused": "[|]",
+			"default": "",
+		},
+	},
+	
+	"clock": {
+		"format": "{0:%H:%M}",
+		"interval": "30"
+	},
+
+	"memory": {
+		"format": "{total:0.1f}Gb/{used:0.1f}Gb",
+	},
+	
+	"cpu": {
+		"format": "cpu {usage}%",
+	},
+	"sway/window": {
+		"format": "{app_id}",
+	},
+}

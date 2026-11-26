@@ -1,0 +1,38 @@
+* {
+	border-radius: 3px;
+	border: none;
+}
+
+
+window{
+
+	font-size: 20px;
+	background-color: rgba(50,50,50,0.8);
+	color: white;
+	border-bottom: 3px solid white;
+}
+
+#entry:selected {
+	background-color: rgb(255,255,255);
+	background: linear-gradient(90deg,rgb(82,85,164),rgb(159,174,183));
+
+}
+#text:selected {
+	color: rgb(62,63,73);
+}
+
+#input{
+	background-color: rgba(50,50,50,0.8);
+	color: white;
+	padding: 0.25em;
+}
+#entry{
+	padding: 0.25em;
+
+}
+
+image{
+
+	margin-left: .25em;
+	margin-right: .25em;
+}
